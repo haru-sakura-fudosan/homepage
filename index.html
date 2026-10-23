@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>株式会社IRE | 豊富な賃貸経営・売買企画実績 × 投資家視点</title>
+    <style>
+        :root {
+            --bg-color: #FAF8F2;          /* 名刺・PPT基調の薄黄色 */
+            --card-bg: #FFFFFF;
+            --text-main: #222222;        /* メインテキスト（黒） */
+            --text-sub: #555555;
+            --ppt-header-blue: #81929E;   /* PPTの上部ヘッダー色（ブルーグレー） */
+            --ppt-accent-gold: #C0A875;   /* PPTのアクセントバー色（ゴールド） */
+            --border-color: #E2DDD3;
+            --font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-family);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 画面上部の固定ナビゲーションバー */
+        header {
+            background-color: var(--bg-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: var(--text-main);
+        }
+
+        .nav-btn {
+            background-color: var(--text-main);
+            color: #FFF;
+            padding: 10px 22px;
+            text-decoration: none;
+            font-size: 14px;
+            border-radius: 4px;
+            transition: opacity 0.3s;
+        }
+
+        .nav-btn:hover {
+            opacity: 0.8;
+        }
+
+        /* ヒーロー（表紙スライド風） */
+        .hero {
+            padding: 90px 0 70px;
+            text-align: center;
+            background-color: var(--bg-color);
+        }
+
+        .hero h1 {
+            font-size: 32px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: var(--text-sub);
+            max-width: 740px;
+            margin: 0 auto 35px;
+        }
+
+        /* スライド風カードセクション */
+        .slide-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 50px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+
+        /* PPTスライド上部の2色バーを再現 */
+        .slide-header-bar {
+            height: 12px;
+            background-color: var(--ppt-header-blue);
+            position: relative;
+        }
+
+        .slide-header-bar::after {
+            content: '';
+            display: block;
+            height: 4px;
+            width: 100%;
+            background-color: var(--ppt-accent-gold);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        .slide-body {
+            padding: 40px;
+        }
+
+        .slide-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--text-main);
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--ppt-accent-gold);
+            display: inline-block;
+        }
+
+        /* Mission構成 */
+        .mission-box {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .mission-highlight {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--ppt-accent-gold);
+            margin-bottom: 20px;
+        }
+
+        .partner-icons {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 35px;
+            flex-wrap: wrap;
+        }
+
+        .partner-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            color: var(--text-sub);
+        }
+
+        .partner-item svg {
+            width: 52px;
+            height: 52px;
+            fill: var(--ppt-header-blue);
+        }
+
+        /* 事業内容グリッド */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .service-box {
+            background-color: var(--bg-color);
+            padding: 30px 20px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 15px;
+            background-color: #FFF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--ppt-accent-gold);
+        }
+
+        .service-icon svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--ppt-accent-gold);
+        }
+
+        .service-box h3 {
+            font-size: 17px;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .service-box p {
+            font-size: 13px;
+            color: var(--text-sub);
+            text-align: left;
+        }
+
+        /* 拠点・戦略 */
+        .strategy-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .access-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #FFF;
+            border: 1px solid var(--border-color);
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .access-table th, .access-table td {
+            padding: 10px 12px;
+            border: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        .access-table th {
+            background-color: rgba(0,0,0,0.03);
+        }
+
+        .strategy-desc {
+            font-size: 13px;
+            color: var(--text-sub);
+        }
+
+        .strategy-desc h4 {
+            color: var(--ppt-accent-gold);
+            font-size: 14px;
+            margin: 15px 0 5px;
+        }
+
+        /* 画像コンテナ */
+        .map-img-container {
+            width: 100%;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            background-color: #E5E3DF;
+        }
+
+        .map-img-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* 会社概要テーブル */
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #FFF;
+            border: 1px solid var(--border-color);
+        }
+
+        .info-table th, .info-table td {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 14px;
+        }
+
+        .info-table th {
+            width: 22%;
+            background-color: rgba(0,0,0,0.02);
+            text-align: left;
+            font-weight: 600;
+        }
+
+        /* お問い合わせフォーム */
+        .form-box {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-color);
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: var(--text-main);
+            color: #FFF;
+            padding: 15px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: opacity 0.3s;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.85;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            font-size: 12px;
+            color: var(--text-sub);
+        }
+
+        @media (max-width: 768px) {
+            .strategy-container { grid-template-columns: 1fr; }
+            .info-table th, .info-table td { display: block; width: 100%; }
+            .info-table th { border-bottom: none; padding-bottom: 4px; }
+            .slide-body { padding: 25px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 固定ヘッダー -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">株式会社IRE</div>
+            <a href="#contact" class="nav-btn">お問い合わせ</a>
+        </div>
+    </header>
+
+    <div class="container" style="padding-top: 30px;">
+
+        <!-- ヒーロー / メインビジュアル -->
+        <div class="hero">
+            <h1>豊富な賃貸経営・売買企画実績 × 投資家視点<br>オーナー様と共に創る、真の資産形成</h1>
+            <p>「運用・売買・企画」の多角的視点から、オーナー様の大切な資産を守り、最大化する最適なソリューションをご提案します。</p>
+            <a href="#contact" class="nav-btn" style="padding: 14px 36px; font-size: 16px;">無料相談はこちら</a>
+        </div>
+
+        <!-- スライド1: Mission -->
+        <div class="slide-card">
+            <div class="slide-header-bar"></div>
+            <div class="slide-body">
+                <h2 class="slide-title">Mission</h2>
+                <div class="mission-box">
+                    <div class="mission-highlight">「運用・売買・企画」の多角的視点 × 「投資家の資産戦略」</div>
+                    <p style="font-size: 15px; color: var(--text-sub); line-height: 2;">
+                        机上の計算だけでは見えないリスクとポテンシャルを、<br>
+                        オーナー実務・売買・企画開発の実績と論理的分析で見極める。<br>
+                        <strong>「創る・動かす・守る」のすべてを知るパートナーとして、資産形成を支援します。</strong>
+                    </p>
+                    <div class="partner-icons">
+                        <div class="partner-item">
+                            <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                            <span>オーナー経験</span>
+                        </div>
+                        <div class="partner-item">
+                            <svg viewBox="0 0 24 24"><path d="M18 11E6 11 6 5 18 5m0 -2E4 3 2 9 18 9 20 3 18 3M3 13h18v8H3z"/></svg>
+                            <span>売買実績</span>
+                        </div>
+                        <div class="partner-item">
+                            <svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+                            <span>企画開発</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド2: 専門性と強み -->
+        <div class="slide-card">
+            <div class="slide-header-bar"></div>
+            <div class="slide-body">
+                <h2 class="slide-title">専門性と強み</h2>
+                <h4 style="font-size: 18px; color: var(--ppt-accent-gold); margin-bottom: 15px;">オーナー・売買・企画の多角的な視点</h4>
+                <p style="font-size: 14px; color: var(--text-sub); line-height: 1.8; margin-bottom: 25px;">
+                    10年超の賃貸経営実績に加え、豊富な売買取引経験とアパート等の企画・開発ノウハウを有しています。「貸す側」の視点だけでなく、「創る」「動かす」実務を知り尽くしたプロフェッショナルとして、確かな資産形成をサポートします。
+                </p>
+                <div style="border-top: 1px dashed var(--border-color); padding-top: 15px; font-size: 13px; color: var(--text-sub);">
+                    <strong>保有資格・専門性：</strong><br>
+                    宅地建物取引士 (東京 第299207号) / AFP (日本FP協会認定) / J.S.A認定 ワインエキスパート / C.P.A認定 チーズプロフェッショナル / WSET Level 3 / 太陽光発電アドバイザー / 再生可能エネルギーアドバイザー / 派遣元責任者 / 職業紹介責任者
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド3: 事業内容 -->
+        <div class="slide-card">
+            <div class="slide-header-bar"></div>
+            <div class="slide-body">
+                <h2 class="slide-title">事業内容</h2>
+                <div class="grid-3">
+                    <div class="service-box">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 3L2 12h3v8h14v-8h3L12 3zm0 4.7l4 3.6V18h-2v-4H10v4H8v-6.7l4-3.6z"/></svg>
+                        </div>
+                        <h3>賃貸不動産の開発</h3>
+                        <p>土地の選定から企画・建築までを一貫してプロデュース。土地のポテンシャルを最大限に引き出し、ゼロから収益物件を創り上げます。</p>
+                    </div>
+                    <div class="service-box">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM11 7h2v10h-2z"/></svg>
+                        </div>
+                        <h3>不動産売買</h3>
+                        <p>開発した収益物件の販売。出口戦略まで見据え、投資家の資産形成に直結する価値ある物件のみをご提案します。</p>
+                    </div>
+                    <div class="service-box">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24"><path d="M11 2v20c-5.07-.5-9-4.79-9-10s3.93-9.5 9-10zm2 0v8.99h9c-.47-4.74-4.26-8.52-9-8.99zm0 11.01V22c4.74-.47 8.53-4.25 9-8.99h-9z"/></svg>
+                        </div>
+                        <h3>資産形成コンサルティング</h3>
+                        <p>不動産運用に加え、AFPとして金融資産も含めたトータルな資産形成を支援。ライフプランに即した最適解を導きます。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド4: 営業エリア・拠点戦略 -->
+        <div class="slide-card">
+            <div class="slide-header-bar"></div>
+            <div class="slide-body">
+                <h2 class="slide-title">営業エリア・拠点戦略</h2>
+                <div class="strategy-container">
+                    <div>
+                        <h3 style="font-size: 15px; margin-bottom: 12px;">アクセス・所要時間目安</h3>
+                        <table class="access-table">
+                            <thead>
+                                <tr>
+                                    <th>拠点</th>
+                                    <th>最寄ICより</th>
+                                    <th>東京事務所より</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>埼玉本店</td>
+                                    <td>東領家IC 5分</td>
+                                    <td>約35分</td>
+                                </tr>
+                                <tr>
+                                    <td>八王子支店</td>
+                                    <td>八王子IC 1分</td>
+                                    <td>約45分</td>
+                                </tr>
+                                <tr>
+                                    <td>茨城支店</td>
+                                    <td>谷和原IC 5分</td>
+                                    <td>約50分</td>
+                                </tr>
+                                <tr>
+                                    <td>東京事務所</td>
+                                    <td>天現寺IC 1分</td>
+                                    <td>-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="strategy-desc">
+                            <h4>「高速IC至近」×「車で1時間」</h4>
+                            <p>オーナー様の大切な資産を守るため、物理的な移動時間を重視。本店・支店をあえて高速道路インターチェンジ近くに配置することで、緊急時の初動スピードを最大化しています。</p>
+                            
+                            <h4>高速道路出口近くへの戦略的配置</h4>
+                            <p>主要幹線道路・ICへのアクセスが良い立地に拠点を構え、渋滞リスクを低減しつつ広域へ最短で急行します。当社のすべての拠点はICから5分以内という基準で選定しています。</p>
+
+                            <h4>都心を中心とした機動力</h4>
+                            <p>都心と郊外をつなぐネットワークにより、トラブル発生時も「車で1時間」以内に駆けつけられる体制を維持します。</p>
+                        </div>
+                    </div>
+
+                    <!-- PPT付属のマップ画像指定 -->
+                    <div>
+                        <div class="map-img-container">
+                            <img src="image_828ef8.jpg" alt="営業エリア・拠点マップ" onerror="this.src='map.png';">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド5: 会社概要 -->
+        <div class="slide-card">
+            <div class="slide-header-bar"></div>
+            <div class="slide-body">
+                <h2 class="slide-title">会社概要</h2>
+                <table class="info-table">
+                    <tr>
+                        <th>会社名</th>
+                        <td>株式会社IRE</td>
+                    </tr>
+                    <tr>
+                        <th>免許・登録</th>
+                        <td>宅地建物取引業：埼玉県知事(1)第25786号</td>
+                    </tr>
+                    <tr>
+                        <th>本店・拠点</th>
+                        <td>
+                            <strong>[埼玉本店]</strong> 〒332-0011 埼玉県川口市元郷3-23-1 E・HOUSE川口101号室<br>
+                            <strong>[八王子支店]</strong> 〒192-0011 東京都八王子市滝山町1-585-5 スカイホーク鷹取第9 201号室<br>
+                            <strong>[茨城支店]</strong> 〒302-0104 茨城県守谷市久保ヶ丘2-12-17 新守谷パールハイツB 101号室<br>
+                            <strong>[東京事務所 (郵便対応)]</strong> 〒106-0047 東京都港区南麻布4-13-7 エルグランデ南麻布701
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>事業内容</th>
+                        <td>賃貸不動産の開発・売買、資産形成コンサルティング</td>
+                    </tr>
+                    <tr>
+                        <th>対応エリア</th>
+                        <td>東京事務所より車で1時間圏内（緊急対応可能エリア重視）</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- スライド6: お問い合わせ -->
+        <div class="slide-card" id="contact">
+            <div class="slide-header-bar"></div>
+            <div class="slide-body">
+                <h2 class="slide-title">お問い合わせ</h2>
+                <p style="text-align: center; margin-bottom: 30px; color: var(--text-sub); font-size: 15px;">
+                    不動産開発・売買・資産形成のご相談につきましては、下記フォームよりお気軽にお問い合わせください。
+                </p>
+
+                <div style="text-align: center; margin: 40px 0;">
+  			<a href="https://forms.gle/1MG1jfkhGnsECeJf6" target="_blank" style="background-color: #2b2b2b; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold;">
+    お問い合わせ・無料相談はこちら（Googleフォーム）
+ 			 </a>
+		</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- フッター -->
+    <footer>
+        <div class="container">
+            <p>&copy; 株式会社IRE All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+
