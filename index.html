@@ -378,95 +378,107 @@
             color: var(--text-sub);
         }
 
-       /* スマホ向けレイアウト調整 */
-    @media (max-width: 768px) {
-        header {
-            padding: 10px 14px;
-        }
-
-        .header-logo {
-            font-size: 1.15rem;
-        }
-
-        .header-sns-group {
-            gap: 6px;
-        }
-
-        .header-sns-btn {
-            width: 28px;
-            height: 28px;
-        }
-
-        .header-sns-btn svg {
-            width: 15px;
-            height: 15px;
-        }
-
-        .header-contact-btn {
-            padding: 6px 10px;
-            font-size: 12px;
-        }
-
-        /* トップ大見出し：途中で文字がちぎれないよう単語単位で折り返し＆サイズ最適化 */
-        .hero {
-            padding: 50px 12px 35px !important;
-        }
-
-        .hero h1 {
-            font-size: 18px !important;
-            line-height: 1.6 !important;
-            letter-spacing: -0.02em;
-            word-break: auto-phrase;       /* 主要ブラウザで文節ごとに自然改行 */
-            overflow-wrap: break-word;
-        }
-
-        .hero p {
-            font-size: 12.5px !important;
-            line-height: 1.7 !important;
-        }
-
-        .slide-body {
-            padding: 24px 16px;
-        }
-
-        .strategy-container {
-            grid-template-columns: 1fr;
-        }
-
-        .info-table th, .info-table td {
-            display: block;
-            width: 100%;
-        }
-
-        .info-table th {
-            border-bottom: none;
-            padding-bottom: 4px;
-            background-color: transparent;
-            color: #222;
-        }
-
-        .info-table td {
-            padding-top: 0;
-        }
-
-        .cta-btn {
-            padding: 14px 20px;
-            font-size: 14px;
-            width: 100%;
-        }
-    }
-
-    @media (max-width: 380px) {
-        .header-sns-group {
-            gap: 4px;
-        }
-        .header-logo {
-            font-size: 1.05rem;
-        }
-        .hero h1 {
-            font-size: 16px !important; /* 画面が小さいスマホ用 */
-        }
-    }
+            /* ヒーロー見出しの行・文節指定 */
+            .hero .hero-line {
+                display: block;
+                margin-bottom: 8px;
+            }
+        
+            .hero .nowrap {
+                display: inline-block;
+                white-space: nowrap;
+            }
+        
+            /* スマホ向けレイアウト調整 */
+            @media (max-width: 768px) {
+                header {
+                    padding: 10px 14px;
+                }
+        
+                .header-logo {
+                    font-size: 1.15rem;
+                }
+        
+                .header-sns-group {
+                    gap: 6px;
+                }
+        
+                .header-sns-btn {
+                    width: 28px;
+                    height: 28px;
+                }
+        
+                .header-sns-btn svg {
+                    width: 15px;
+                    height: 15px;
+                }
+        
+                .header-contact-btn {
+                    padding: 6px 10px;
+                    font-size: 12px;
+                }
+        
+                .hero {
+                    padding: 40px 15px 30px !important;
+                }
+        
+                .hero h1 {
+                    font-size: 18px !important;
+                    line-height: 1.6 !important;
+                    letter-spacing: -0.02em;
+                }
+        
+                .hero .hero-line {
+                    margin-bottom: 6px;
+                }
+        
+                .hero p {
+                    font-size: 12.5px !important;
+                    line-height: 1.7 !important;
+                }
+        
+                .slide-body {
+                    padding: 24px 16px;
+                }
+        
+                .strategy-container {
+                    grid-template-columns: 1fr;
+                }
+        
+                .info-table th, .info-table td {
+                    display: block;
+                    width: 100%;
+                }
+        
+                .info-table th {
+                    border-bottom: none;
+                    padding-bottom: 4px;
+                    background-color: transparent;
+                    color: #222;
+                }
+        
+                .info-table td {
+                    padding-top: 0;
+                }
+        
+                .cta-btn {
+                    padding: 14px 20px;
+                    font-size: 14px;
+                    width: 100%;
+                }
+            }
+        
+            @media (max-width: 380px) {
+                .header-sns-group {
+                    gap: 4px;
+                }
+                .header-logo {
+                    font-size: 1.05rem;
+                }
+                .hero h1 {
+                    font-size: 16px !important;
+                }
+            }
     </style>
 </head>
 <body>
