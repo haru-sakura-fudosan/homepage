@@ -631,3 +631,8 @@
         .doc p, .doc li { font-size: 14px; color: var(--text-sub); }
         .doc ul { padding-left: 22px; margin-top: 6px; }
         .doc a, .info-table a { color: var(--black); }
+
+        .case-count { display: flex; align-items: baseline; justify-content: center; gap: 8px; margin: -10px auto 30px; padding: 10px 0; width: fit-content; border-top: 1px solid var(--black); border-bottom: 1px solid var(--black); min-width: 260px; }
+        .case-count .label { font-size: 13px; letter-spacing: 0.15em; }
+        .case-count .num { font-size: 40px; font-weight: 700; line-height: 1; }
+        .case-count .unit { font-size: 14px; }
