@@ -2,7 +2,8 @@
             /* 3色配色：黒 / 白 / 白ワイン色 */
             --black: #0D0D0D;
             --white: #FFFFFF;
-            --wine: #FFF3BB;           /* 白ワイン色（コーポレートカラー） */
+            --wine: #FDF4C8;           /* 白ワイン色：線・アクセント用 */
+            --wine-soft: #FFFBE6;      /* 白ワイン色（薄）：ボックスの塗りつぶし用 */
             --bg-color: var(--white);
             --card-bg: var(--white);
             --text-main: #0D0D0D;
@@ -236,7 +237,7 @@
 
         /* 事業内容 */
         .service-box {
-            background-color: var(--wine);
+            background-color: var(--wine-soft);
             padding: 30px 20px;
             border-radius: 2px;
             border-top: 4px solid var(--black);
@@ -297,7 +298,7 @@
         }
 
         .access-table th {
-            background-color: var(--wine);
+            background-color: var(--wine-soft);
             color: var(--black);
         }
 
@@ -332,7 +333,7 @@
 
         .info-table th {
             width: 24%;
-            background-color: var(--wine);
+            background-color: var(--wine-soft);
             color: var(--black);
             text-align: left;
             font-weight: 600;
@@ -512,7 +513,7 @@
             white-space: nowrap;
             border-bottom: 3px solid transparent;
         }
-        .site-nav a:hover { background: var(--wine); }
+        .site-nav a:hover { background: var(--wine-soft); }
         .site-nav a.active { border-bottom-color: var(--black); }
 
         /* 下層ページのタイトル帯 */
@@ -557,7 +558,7 @@
             background: var(--white);
             transition: background-color 0.2s;
         }
-        .link-tile:hover { background: var(--wine); }
+        .link-tile:hover { background: var(--wine-soft); }
         .link-tile .en { font-size: 11px; letter-spacing: 0.25em; color: var(--text-sub); }
         .link-tile strong { display: block; font-size: 18px; margin: 4px 0 6px; }
         .link-tile span.desc { font-size: 13px; color: var(--text-sub); line-height: 1.7; }
@@ -572,7 +573,7 @@
             font-weight: 600;
             font-size: 14px;
         }
-        .more-link:hover { background: var(--wine); }
+        .more-link:hover { background: var(--wine-soft); }
 
         .footer-nav { margin-bottom: 14px; }
         .footer-nav a {
@@ -584,7 +585,9 @@
         .footer-nav a:hover { text-decoration: underline; }
 
         /* ===== 追加ページ用 ===== */
-        .logo-img { height: 38px; width: auto; display: block; }
+        .logo-img { height: 58px; width: auto; display: block; }
+        @media (max-width: 768px) { .logo-img { height: 46px; } }
+        @media (max-width: 380px) { .logo-img { height: 40px; } }
         .header-logo::before { display: none !important; }
         .header-logo { display: flex; align-items: center; }
 
@@ -600,7 +603,7 @@
         .case-points { list-style: none; font-size: 14px; margin-bottom: 14px; }
         .case-points li { padding: 6px 0 6px 18px; border-bottom: 1px dashed #ccc; position: relative; }
         .case-points li::before { content: ''; position: absolute; left: 2px; top: 15px; width: 8px; height: 8px; background: var(--black); }
-        .case-note { font-size: 13px; color: var(--text-sub); background: var(--wine); padding: 10px 14px; }
+        .case-note { font-size: 13px; color: var(--text-sub); background: var(--wine-soft); padding: 10px 14px; }
 
         .flow-list { list-style: none; }
         .flow-step { display: flex; gap: 18px; padding: 18px 0; border-bottom: 1px dashed #ccc; }
@@ -617,7 +620,7 @@
         .faq-item[open] summary::after { content: '\2212'; }
         .faq-item p { padding: 0 6px 18px 34px; font-size: 14px; color: var(--text-sub); }
 
-        .cta-band { background: var(--wine); border: 1px solid var(--black); text-align: center; padding: 36px 20px; margin-bottom: 40px; }
+        .cta-band { background: var(--wine-soft); border: 1px solid var(--black); text-align: center; padding: 36px 20px; margin-bottom: 40px; }
         .cta-lead { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
         .cta-sub { font-size: 14px; margin-bottom: 20px; }
         .cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
