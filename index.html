@@ -4,519 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>株式会社IRE | 豊富な賃貸経営・売買企画実績 × 投資家視点</title>
-    <style>
-        :root {
-            --bg-color: #FAF8F2;          /* 名刺・PPT基調の薄黄色 */
-            --card-bg: #FFFFFF;
-            --text-main: #222222;        /* メインテキスト（黒） */
-            --text-sub: #555555;
-            --ppt-header-blue: #81929E;   /* PPTの上部ヘッダー色（ブルーグレー） */
-            --ppt-accent-gold: #C0A875;   /* PPTのアクセントバー色（ゴールド） */
-            --border-color: #E2DDD3;
-            --font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: var(--font-family);
-            line-height: 1.8;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* 画面上部の固定ナビゲーションバー */
-        header {
-            background-color: #faf9f6;
-            border-bottom: 1px solid #eae8e1;
-            padding: 14px 20px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-inner {
-            max-width: 980px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 12px;
-        }
-
-        /* ロゴ：スマホでも途中で改行させない */
-        .header-logo {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: #222;
-            letter-spacing: 0.05em;
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-
-        .header-logo a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* ヘッダー右側エリア */
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-shrink: 0;
-        }
-
-        .header-sns-group {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .header-sns-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            text-decoration: none;
-            color: #fff;
-            flex-shrink: 0;
-        }
-
-        .header-contact-btn {
-            background-color: #222;
-            color: #fff;
-            text-decoration: none;
-            padding: 8px 14px;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 13px;
-            white-space: nowrap;
-            display: inline-block;
-            transition: opacity 0.2s;
-        }
-
-        .header-contact-btn:hover {
-            opacity: 0.85;
-        }
-
-        .container {
-            max-width: 980px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* ヒーロー（表紙スライド風） */
-        .hero {
-            padding: 70px 0 50px;
-            text-align: center;
-            background-color: var(--bg-color);
-        }
-
-        .hero h1 {
-            font-size: 28px;
-            line-height: 1.5;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 15px;
-            color: var(--text-sub);
-            max-width: 740px;
-            margin: 0 auto;
-        }
-
-        /* スライド風カードセクション */
-        .slide-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            margin-bottom: 40px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-        }
-
-        /* PPTスライド上部の2色バー */
-        .slide-header-bar {
-            height: 12px;
-            background-color: var(--ppt-header-blue);
-            position: relative;
-        }
-
-        .slide-header-bar::after {
-            content: '';
-            display: block;
-            height: 4px;
-            width: 100%;
-            background-color: var(--ppt-accent-gold);
-            position: absolute;
-            bottom: 0;
-            left: 0;
-        }
-
-        .slide-body {
-            padding: 35px 30px;
-        }
-
-        .slide-title-wrap {
-            border-bottom: 2px solid var(--ppt-accent-gold);
-            padding-bottom: 8px;
-            margin-bottom: 28px;
-            display: inline-block;
-        }
-
-        .slide-title {
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: #222;
-            margin: 0;
-            letter-spacing: 0.03em;
-        }
-
-        /* カードグリッド */
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .feature-card {
-            background-color: #ffffff;
-            border: 1px solid #e8e6e1;
-            border-radius: 8px;
-            padding: 30px 20px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .feature-icon-circle {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            border: 1px solid #c5ab7d;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 16px;
-            color: #b39b6c;
-            font-size: 22px;
-        }
-
-        .feature-card h3 {
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: #222;
-            margin-bottom: 12px;
-        }
-
-        .feature-card p {
-            font-size: 0.85rem;
-            color: #555;
-            line-height: 1.75;
-            margin: 0;
-            text-align: left;
-        }
-
-        /* 事業内容 */
-        .service-box {
-            background-color: var(--bg-color);
-            padding: 30px 20px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            text-align: center;
-        }
-
-        .service-icon {
-            width: 56px;
-            height: 56px;
-            margin: 0 auto 15px;
-            background-color: #FFF;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--ppt-accent-gold);
-        }
-
-        .service-icon svg {
-            width: 28px;
-            height: 28px;
-            fill: var(--ppt-accent-gold);
-        }
-
-        .service-box h3 {
-            font-size: 1.05rem;
-            margin-bottom: 10px;
-            color: var(--text-main);
-        }
-
-        .service-box p {
-            font-size: 0.85rem;
-            color: var(--text-sub);
-            text-align: left;
-            line-height: 1.75;
-        }
-
-        /* 拠点・戦略 */
-        .strategy-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            align-items: start;
-        }
-
-        .access-table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: #FFF;
-            border: 1px solid var(--border-color);
-            font-size: 13px;
-            margin-bottom: 20px;
-        }
-
-        .access-table th, .access-table td {
-            padding: 10px 12px;
-            border: 1px solid var(--border-color);
-            text-align: left;
-        }
-
-        .access-table th {
-            background-color: rgba(0,0,0,0.03);
-        }
-
-        .strategy-desc {
-            font-size: 13px;
-            color: var(--text-sub);
-            line-height: 1.75;
-        }
-
-        .strategy-desc h4 {
-            color: var(--ppt-accent-gold);
-            font-size: 14px;
-            margin: 15px 0 5px;
-        }
-
-        /* 会社概要テーブル */
-        .info-table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: #FFF;
-            border: 1px solid var(--border-color);
-        }
-
-        .info-table th, .info-table td {
-            padding: 16px 20px;
-            border-bottom: 1px solid var(--border-color);
-            font-size: 14px;
-            line-height: 1.7;
-        }
-
-        .info-table th {
-            width: 24%;
-            background-color: rgba(0,0,0,0.02);
-            text-align: left;
-            font-weight: 600;
-        }
-
-        /* お問い合わせCTAボタン */
-        .cta-btn-wrap {
-            text-align: center;
-            margin: 35px 0 25px;
-        }
-
-        .cta-btn {
-            background-color: #2b2b2b;
-            color: white;
-            padding: 15px 28px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 15px;
-            display: inline-block;
-            transition: opacity 0.2s;
-            max-width: 100%;
-        }
-
-        .cta-btn:hover {
-            opacity: 0.85;
-        }
-
-        /* お問い合わせ注記：不自然な文字落ち防止 */
-        .notice-container {
-            margin-top: 20px;
-            text-align: center;
-            padding: 0 10px;
-        }
-
-        .notice-text {
-            font-size: 0.85rem;
-            color: #555;
-            line-height: 1.8;
-            margin: 0;
-            word-break: keep-all;
-            overflow-wrap: break-word;
-        }
-
-        .nowrap-phrase {
-            display: inline-block;
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px 0;
-            font-size: 12px;
-            color: var(--text-sub);
-        }
-
-            /* ヒーロー見出しの行・文節指定 */
-            .hero .hero-line {
-                display: block;
-                margin-bottom: 8px;
-            }
-        
-            .hero .nowrap {
-                display: inline-block;
-                white-space: nowrap;
-            }
-        
-            /* スマホ向けレイアウト調整 */
-            @media (max-width: 768px) {
-                header {
-                    padding: 10px 14px;
-                }
-        
-                .header-logo {
-                    font-size: 1.15rem;
-                }
-        
-                .header-sns-group {
-                    gap: 6px;
-                }
-        
-                .header-sns-btn {
-                    width: 28px;
-                    height: 28px;
-                }
-        
-                .header-sns-btn svg {
-                    width: 15px;
-                    height: 15px;
-                }
-        
-                .header-contact-btn {
-                    padding: 6px 10px;
-                    font-size: 12px;
-                }
-        
-                .hero {
-                    padding: 40px 15px 30px !important;
-                }
-        
-                .hero h1 {
-                    font-size: 18px !important;
-                    line-height: 1.6 !important;
-                    letter-spacing: -0.02em;
-                }
-        
-                .hero .hero-line {
-                    margin-bottom: 6px;
-                }
-        
-                .hero p {
-                    font-size: 12.5px !important;
-                    line-height: 1.7 !important;
-                }
-        
-                .slide-body {
-                    padding: 24px 16px;
-                }
-        
-                .strategy-container {
-                    grid-template-columns: 1fr;
-                }
-        
-                .info-table th, .info-table td {
-                    display: block;
-                    width: 100%;
-                }
-        
-                .info-table th {
-                    border-bottom: none;
-                    padding-bottom: 4px;
-                    background-color: transparent;
-                    color: #222;
-                }
-        
-                .info-table td {
-                    padding-top: 0;
-                }
-        
-                .cta-btn {
-                    padding: 14px 20px;
-                    font-size: 14px;
-                    width: 100%;
-                }
-            }
-        
-            @media (max-width: 380px) {
-                .header-sns-group {
-                    gap: 4px;
-                }
-                .header-logo {
-                    font-size: 1.05rem;
-                }
-                .hero h1 {
-                    font-size: 16px !important;
-                }
-            }
-    </style>
+    <meta name="description" content="埼玉・東京・千葉・茨城エリアで賃貸不動産の開発・売買・資産形成コンサルティングを行う株式会社IRE。不動産の売却・査定、空き家のご相談はお気軽に。">
+    <link rel="icon" href="images/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="株式会社IRE">
+    <meta property="og:title" content="株式会社IRE | 豊富な賃貸経営・売買企画実績 × 投資家視点">
+    <meta property="og:description" content="埼玉・東京・千葉・茨城エリアで賃貸不動産の開発・売買・資産形成コンサルティングを行う株式会社IRE。不動産の売却・査定、空き家のご相談はお気軽に。">
+    <meta property="og:url" content="https://ire-saitama.jp/">
+    <meta property="og:image" content="https://ire-saitama.jp/images/ogp.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- 固定ヘッダー -->
     <header>
       <div class="header-inner">
         <!-- ロゴ -->
         <div class="header-logo">
-          <a href="#">株式会社IRE</a>
+          <a href="index.html"><img class="logo-img" src="images/logo.png" alt="株式会社IRE"></a>
         </div>
       
         <!-- SNSアイコン＋お問い合わせボタン -->
         <div class="header-right">
           <div class="header-sns-group">
             <!-- note -->
-            <a href="https://note.com/haru_sakura_re" target="_blank" rel="noopener noreferrer" title="note" class="header-sns-btn" style="background-color: #2cb696; font-size: 14px; font-weight: bold;">n</a>
+            <a href="https://note.com/haru_sakura_re" target="_blank" rel="noopener noreferrer" title="note" class="header-sns-btn" style="font-size: 14px; font-weight: bold;">n</a>
             
             <!-- YouTube -->
-            <a href="https://www.youtube.com/@haru_sakura_fudosan" target="_blank" rel="noopener noreferrer" title="YouTube" class="header-sns-btn" style="background-color: #ff0000;">
+            <a href="https://www.youtube.com/@haru_sakura_fudosan" target="_blank" rel="noopener noreferrer" title="YouTube" class="header-sns-btn">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
             </a>
       
             <!-- Instagram -->
-            <a href="https://www.instagram.com/haru_sakura_fudosan" target="_blank" rel="noopener noreferrer" title="Instagram" class="header-sns-btn" style="background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);">
+            <a href="https://www.instagram.com/haru_sakura_fudosan" target="_blank" rel="noopener noreferrer" title="Instagram" class="header-sns-btn">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
             </a>
           </div>
       
           <!-- お問い合わせボタン -->
-          <a href="#contact" class="header-contact-btn">お問い合わせ</a>
+          <a href="contact.html" class="header-contact-btn">お問い合わせ</a>
         </div>
       </div>
+      <nav class="site-nav"><a href="index.html" class="active">トップ</a><a href="business.html">事業内容</a><a href="works.html">実績</a><a href="flow.html">ご相談の流れ</a><a href="faq.html">FAQ</a><a href="area.html">営業エリア</a><a href="company.html">会社概要</a><a href="contact.html">お問い合わせ</a></nav>
     </header>
 
     <div class="container" style="padding-top: 10px;">
 
-        <!-- ヒーロー / メインビジュアル -->
+<!-- ヒーロー / メインビジュアル -->
         <div class="hero">
             <h1>
                 <span class="hero-line">
@@ -608,145 +147,29 @@
             </div>
         </div>
 
-        <!-- スライド3: 営業エリア・拠点戦略 -->
-        <div class="slide-card">
-            <div class="slide-header-bar"></div>
-            <div class="slide-body">
-                <div class="slide-title-wrap">
-                    <h2 class="slide-title">営業エリア・拠点戦略</h2>
-                </div>
-                <div class="strategy-container">
-                    <div>
-                        <h3 style="font-size: 15px; margin-bottom: 12px;">アクセス・所要時間目安</h3>
-                        <table class="access-table">
-                            <thead>
-                                <tr>
-                                    <th>拠点</th>
-                                    <th>最寄ICより</th>
-                                    <th>東京事務所より</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>埼玉本店</td>
-                                    <td>東領家IC 5分</td>
-                                    <td>約35分</td>
-                                </tr>
-                                <tr>
-                                    <td>八王子支店</td>
-                                    <td>八王子IC 1分</td>
-                                    <td>約45分</td>
-                                </tr>
-                                <tr>
-                                    <td>茨城支店</td>
-                                    <td>谷和原IC 5分</td>
-                                    <td>約50分</td>
-                                </tr>
-                                <tr>
-                                    <td>東京事務所</td>
-                                    <td>天現寺IC 1分</td>
-                                    <td>-</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <div class="more-link-wrap" style="margin: -20px 0 40px;"><a class="more-link" href="business.html">事業内容をくわしく見る →</a></div>
 
-                        <div class="strategy-desc">
-                            <h4>「高速IC至近」×「車で1時間」</h4>
-                            <p>オーナー様の大切な資産を守るため、物理的な移動時間を重視。本店・支店をあえて高速道路インターチェンジ近くに配置することで、緊急時の初動スピードを最大化しています。</p>
-                            
-                            <h4>高速道路出口近くへの戦略的配置</h4>
-                            <p>主要幹線道路・ICへのアクセスが良い立地に拠点を構え、渋滞リスクを低減しつつ広域へ最短で急行します。当社のすべての拠点はICから5分以内という基準で選定しています。</p>
-
-                            <h4>都心を中心とした機動力</h4>
-                            <p>都心と郊外をつなぐネットワークにより、トラブル発生時も「車で1時間」以内に駆けつけられる体制を維持します。</p>
-                        </div>
-                    </div>
-
-                    <!-- エリアマップ画像枠 -->
-                    <div style="display: flex; flex-direction: column; align-items: center;">
-                        <div style="width: 100%; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border: 1px solid #e2e8f0;">
-                            <img src="営業エリア.png" alt="営業エリア・拠点アクセスマップ" style="width: 100%; height: auto; display: block; object-fit: cover;">
-                        </div>
-                        <p style="font-size: 0.85rem; color: #64748b; margin-top: 10px; text-align: center; line-height: 1.5;">
-                            首都圏ネットワーク<br>
-                            <span style="font-size: 0.8rem;">（埼玉本店・東京事務所・八王子支店・茨城支店）</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
+        <div class="link-tiles">
+            <a class="link-tile" href="works.html"><span class="en">WORKS</span><strong>実績・事例</strong><span class="desc">開発・売買の取り組み事例をご紹介します。</span></a>
+            <a class="link-tile" href="flow.html"><span class="en">FLOW</span><strong>ご相談の流れ</strong><span class="desc">お問い合わせから解決までの進め方。</span></a>
+            <a class="link-tile" href="faq.html"><span class="en">FAQ</span><strong>よくあるご質問</strong><span class="desc">相談前の疑問にお答えします。</span></a>
+            <a class="link-tile" href="area.html"><span class="en">AREA</span><strong>営業エリア・拠点戦略</strong><span class="desc">埼玉・東京・千葉・茨城の拠点網。車で1時間圏内。</span></a>
+            <a class="link-tile" href="company.html"><span class="en">COMPANY</span><strong>会社概要</strong><span class="desc">免許・所在地・事業内容のご案内。</span></a>
         </div>
-
-        <!-- スライド4: 会社概要 -->
-        <div class="slide-card">
-            <div class="slide-header-bar"></div>
-            <div class="slide-body">
-                <div class="slide-title-wrap">
-                    <h2 class="slide-title">会社概要</h2>
-                </div>
-                <table class="info-table">
-                    <tr>
-                        <th>会社名</th>
-                        <td>株式会社IRE</td>
-                    </tr>
-                    <tr>
-                        <th>免許・登録</th>
-                        <td>宅地建物取引業：埼玉県知事(1)第25786号</td>
-                    </tr>
-                    <tr>
-                        <th>本店・拠点</th>
-                        <td>
-                            <strong>[埼玉本店]</strong> 〒332-0011 埼玉県川口市元郷3-23-1 E・HOUSE川口101号室<br>
-                            <strong>[八王子支店]</strong> 〒192-0011 東京都八王子市滝山町1-585-5 スカイホーク鷹取第9 201号室<br>
-                            <strong>[茨城支店]</strong> 〒302-0104 茨城県守谷市久保ヶ丘2-12-17 新守谷パールハイツB 101号室<br>
-                            <strong>[東京事務所 (事務郵便対応)]</strong> 〒106-0047 東京都港区南麻布4
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>事業内容</th>
-                        <td>賃貸不動産の開発・売買、資産形成コンサルティング</td>
-                    </tr>
-                    <tr>
-                        <th>対応エリア</th>
-                        <td>東京事務所より車で1時間圏内（緊急対応可能エリア重視）</td>
-                    </tr>
-                </table>
+        <section class="cta-band">
+            <p class="cta-lead">不動産の売却・空き家のご相談はお気軽に</p>
+            <p class="cta-sub">ご相談・査定のご依頼は無料です。まずは状況をお聞かせください。</p>
+            <div class="cta-actions">
+                <a class="cta-btn" href="contact.html">無料相談はこちら</a>
+                <a class="more-link" href="mailto:info@ire-saitama.jp">メールで問い合わせる</a>
             </div>
-        </div>
-
-        <!-- スライド5: お問い合わせ -->
-        <div class="slide-card" id="contact">
-            <div class="slide-header-bar"></div>
-            <div class="slide-body">
-                <div class="slide-title-wrap">
-                    <h2 class="slide-title">お問い合わせ</h2>
-                </div>
-                <p style="text-align: center; margin-bottom: 25px; color: var(--text-sub); font-size: 15px;">
-                    不動産開発・売買・資産形成のご相談につきましては、下記フォームよりお気軽にお問い合わせください。
-                </p>
-
-                <!-- CTAボタン -->
-                <div class="cta-btn-wrap">
-                    <a href="https://forms.gle/1MG1jfkhGnsECeJf6" target="_blank" rel="noopener noreferrer" class="cta-btn">
-                        お問い合わせ・無料相談はこちら<br>（Googleフォーム）
-                    </a>
-                </div>
-
-                <!-- 注書き（スマホでの文字落ち防止処理） -->
-                <div class="notice-container">
-                    <p class="notice-text">
-                        ※ 現在、ご相談は<span class="nowrap-phrase"><strong>営業エリア内（隣接地域要相談）</strong>の</span><br>
-                        <span class="nowrap-phrase"><strong>「不動産売却・査定」</strong>および</span><span class="nowrap-phrase"><strong>「実家・空き家の処分・手放し相談」</strong>に</span><span class="nowrap-phrase">限定して承っております。</span><br>
-                        <span style="font-size: 0.78rem; color: #888;">（その他サービスにつきましては順次拡大予定です）</span>
-                    </p>
-                </div>
-            </div>
-        </div>
+        </section>
 
     </div>
 
-    <!-- フッター -->
     <footer>
         <div class="container">
+            <div class="footer-nav"><a href="index.html">トップ</a><a href="business.html">事業内容</a><a href="works.html">実績</a><a href="flow.html">ご相談の流れ</a><a href="faq.html">FAQ</a><a href="area.html">営業エリア</a><a href="company.html">会社概要</a><a href="contact.html">お問い合わせ</a><a href="privacy.html">プライバシーポリシー</a></div>
             <p>&copy; 株式会社IRE All Rights Reserved.</p>
         </div>
     </footer>
