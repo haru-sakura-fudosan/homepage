@@ -636,3 +636,12 @@
         .case-count .label { font-size: 13px; letter-spacing: 0.15em; }
         .case-count .num { font-size: 40px; font-weight: 700; line-height: 1; }
         .case-count .unit { font-size: 14px; }
+
+        /* 代表挨拶 */
+        .message p { font-size: 15px; line-height: 2.1; color: #222; margin-bottom: 1.2em; }
+        .message .message-lead { font-size: 19px; font-weight: 700; line-height: 1.8; color: var(--black); border-left: 4px solid var(--black); padding-left: 14px; margin-bottom: 1.6em; }
+        .message .signature { text-align: right; margin-top: 2em; font-weight: 700; line-height: 1.9; }
+        .message-sub { font-size: 16px; margin: 34px 0 10px; padding-left: 10px; border-left: 4px solid var(--black); }
+        .message-points { list-style: none; }
+        .message-points li { padding: 14px 16px; margin-bottom: 10px; background: var(--wine-soft); border-top: 3px solid var(--black); font-size: 14px; color: #222; }
+        .message-points li strong { display: block; font-size: 15px; margin-bottom: 2px; }
