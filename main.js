@@ -12,6 +12,53 @@
   var FORM_ACCESS_KEY = '4ddd2dea-ac98-4f46-829d-5132f27c04b4';
   var MAIL_TO = 'info@ire-saitama.jp';
 
+
+  /* スマホ：日本語を文節（助詞・句読点）の切れ目だけで折り返す（文字の途中で切れないように） */
+  (function () {
+    if (!window.Intl || !Intl.Segmenter || !window.matchMedia) return;
+    var mq = window.matchMedia('(max-width: 768px)');
+    var done = false;
+    var JA = /[぀-ヿ一-鿿]/;
+    var PART = { 'は': 1, 'が': 1, 'を': 1, 'に': 1, 'で': 1, 'と': 1, 'の': 1, 'も': 1, 'へ': 1, 'や': 1, 'から': 1, 'まで': 1, 'より': 1, 'など': 1, 'だけ': 1, 'ので': 1 };
+    var seg = new Intl.Segmenter('ja', { granularity: 'word' });
+    function phrases(text) {
+      var parts = Array.from(seg.segment(text)), out = [], cur = '';
+      for (var i = 0; i < parts.length; i++) {
+        var w = parts[i].segment, nx = parts[i + 1] ? parts[i + 1].segment : '';
+        cur += w;
+        var nxPart = PART[nx] || /^[、。，．！？」』）)]/.test(nx);
+        var brk = false;
+        if (/[、。，．！？]$/.test(w)) brk = !/^[」』）)]/.test(nx);
+        else if (/[」』）)]$/.test(w)) brk = !nxPart;
+        else if (/^[「『（(]$/.test(w)) brk = false;
+        else if (PART[w]) brk = !nxPart;
+        if (brk) { out.push(cur); cur = ''; }
+      }
+      if (cur) out.push(cur);
+      return out;
+    }
+    function apply() {
+      if (done || !mq.matches) return;
+      done = true;
+      var skip = 'header,nav,footer,form,svg,script,style,textarea,select,.sticky-cta,.case-spec,.case-body h2,.ph';
+      var blocks = document.querySelectorAll('h1,h2,h3,p,li,dd');
+      for (var b = 0; b < blocks.length; b++) {
+        if (blocks[b].closest(skip)) continue;
+        var w = document.createTreeWalker(blocks[b], NodeFilter.SHOW_TEXT), nodes = [], n;
+        while ((n = w.nextNode())) { if (JA.test(n.nodeValue) && !n.parentNode.closest(skip.replace(',.ph', ''))) nodes.push(n); }
+        nodes.forEach(function (t) {
+          var ph = phrases(t.nodeValue);
+          if (ph.length < 2) return;
+          var f = document.createDocumentFragment();
+          ph.forEach(function (p) { var sp = document.createElement('span'); sp.className = 'ph'; sp.textContent = p; f.appendChild(sp); });
+          t.parentNode.replaceChild(f, t);
+        });
+      }
+    }
+    apply();
+    if (mq.addEventListener) mq.addEventListener('change', apply);
+  })();
+
   var form = document.getElementById('inquiry-form');
 
   /* ヒーローのCTA：相談種別を自動選択してフォームへスクロール */

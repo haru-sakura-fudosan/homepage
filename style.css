@@ -1070,3 +1070,12 @@
         @media (max-width: 640px) {
             .hero .hero-sub .nowrap { white-space: normal; display: inline; word-break: normal; }
         }
+
+        /* v55 スマホ用ネットワーク図：各拠点に「東京から◯分」を明記 */
+        .net-svg .m-sm { font-size: 15px; fill: #444; }
+        .net-svg .m-min2 { font-size: 24px; font-weight: 700; fill: #0D0D0D; }
+        .net-svg .m-hub { font-size: 28px; }
+        .net-svg .m-hubic { font-size: 18px; fill: #FDF4C8; }
+        .ph { display: inline-block; white-space: nowrap; }
+        h1, h2, h3 { text-wrap: balance; }
+        p, li, dd { text-wrap: pretty; }
