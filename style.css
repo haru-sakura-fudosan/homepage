@@ -1004,3 +1004,64 @@
 
         .area-guide { font-size: 12.5px; color: var(--black); margin: -12px 0 8px; padding-left: 10px; border-left: 3px solid var(--wine); line-height: 1.7; }
         .area-guide[hidden] { display: none; }
+
+        /* ===== 実績注釈（v38） ===== */
+        .works-note { font-size: 12px; color: #666; line-height: 1.8; letter-spacing: .04em; text-align: left; margin: 18px 0 28px; padding-top: 12px; border-top: 1px solid var(--wine); }
+
+        /* ===== 実績カード・写真なし（v39） ===== */
+        .case-grid { grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: stretch; }
+        .case-card { border: 1px solid #bbb; border-top: 4px solid var(--black); }
+        .case-body { display: flex; flex-direction: column; flex: 1; padding: 24px 22px 26px; }
+        .case-body h2 { font-size: 19px; line-height: 1.5; }
+        .case-spec { margin: 4px 0 16px; border-top: 1px solid var(--wine); }
+        .case-spec > div { display: grid; grid-template-columns: 5.5em 1fr; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--wine); font-size: 13.5px; line-height: 1.7; }
+        .case-spec dt { font-weight: 700; }
+        .case-spec dd { margin: 0; }
+        .case-note { margin-top: auto; }
+        @media (max-width: 960px) { .case-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 640px) { .case-grid { grid-template-columns: 1fr; } }
+
+        /* ===== 実績カード：伊奈町のみ写真なし（v40） ===== */
+        .case-card { border: 1px solid var(--black); }
+        .case-card-text { border: 1px solid #bbb; border-top: 4px solid var(--black); }
+        .case-body { flex: 1; }
+
+        /* ===== 伊奈町：写真枠は非公開表示（v41） ===== */
+        .case-photo-ph { height: 220px; display: flex; align-items: center; justify-content: center; background: var(--wine-soft); border-bottom: 4px solid var(--wine); color: #555; font-size: 14px; letter-spacing: .12em; text-align: center; padding: 0 16px; }
+        .case-card-text { border: 1px solid var(--black); }
+
+        /* ===== 実績カード共通フォーマット（v42） ===== */
+        .case-card { border: 1px solid var(--black); border-top: 1px solid var(--black); }
+        .case-spec > div { grid-template-columns: 6em 1fr; }
+        .case-body h2 { min-height: 3em; margin-bottom: 4px; }
+        @media (max-width: 960px) { .case-body h2 { min-height: 0; } }
+
+        /* v43 */
+        .case-spec dd { text-wrap: pretty; }
+        .case-spec .nowrap, .case-body h2 .nowrap { display: inline-block; }
+
+        /* v46 実績コメントボックスを同寸に */
+        .case-spec { flex: 1; }
+        .case-note { margin-top: 0; min-height: 8.6em; line-height: 1.8; }
+
+        /* v47 実績カードの各行を横並びでそろえる（subgrid） */
+        .case-grid { row-gap: 0; align-items: stretch; }
+        .case-card { display: grid; grid-row: span 10; grid-template-rows: subgrid; row-gap: 0; margin-bottom: 22px; }
+        .case-body, .case-spec { display: contents; }
+        .case-body > *, .case-spec > div { margin-left: 22px; margin-right: 22px; }
+        .case-card > img, .case-card > .case-photo-ph { grid-row: 1; }
+        .case-body .badge { align-self: end; justify-self: start; margin-top: 24px; }
+        .case-body h2 { min-height: 0; margin-top: 10px; margin-bottom: 2px; }
+        .case-spec > div:first-child { border-top: 1px solid var(--wine); }
+        .case-sub { margin-bottom: 12px; }
+        .case-note { margin: 16px 22px 26px; min-height: 0; align-self: stretch; }
+        .case-card .case-body > h2, .case-card .case-body > .case-sub { margin-left: 22px; margin-right: 22px; }
+
+        /* v51 実績4件：PCは2列 */
+        .case-grid { grid-template-columns: repeat(2, 1fr); }
+        @media (max-width: 640px) { .case-grid { grid-template-columns: 1fr; } }
+
+        /* v52 実績5件：PC3列／タブレット2列／スマホ1列 */
+        .case-grid { grid-template-columns: repeat(3, 1fr); }
+        @media (max-width: 960px) { .case-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 640px) { .case-grid { grid-template-columns: 1fr; } }
