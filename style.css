@@ -1065,3 +1065,8 @@
         .case-grid { grid-template-columns: repeat(3, 1fr); }
         @media (max-width: 960px) { .case-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 640px) { .case-grid { grid-template-columns: 1fr; } }
+
+        /* v54 スマホ：ヒーロー補足文は画面幅に合わせて自然に折り返す */
+        @media (max-width: 640px) {
+            .hero .hero-sub .nowrap { white-space: normal; display: inline; word-break: normal; }
+        }
