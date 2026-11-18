@@ -31,7 +31,7 @@
         if (/[、。，．！？]$/.test(w)) brk = !/^[」』）)]/.test(nx);
         else if (/[」』）)]$/.test(w)) brk = !nxPart;
         else if (/^[「『（(]$/.test(w)) brk = false;
-        else if (PART[w]) brk = !nxPart;
+        else if (PART[w]) brk = !nxPart && !/^[぀-ゟ]/.test(nx);  /* 次がひらがなならまだ語の途中（例：手が|けた） */
         if (brk) { out.push(cur); cur = ''; }
       }
       if (cur) out.push(cur);
@@ -40,7 +40,7 @@
     function apply() {
       if (done || !mq.matches) return;
       done = true;
-      var skip = 'header,nav,footer,form,svg,script,style,textarea,select,.sticky-cta,.case-spec,.case-body h2,.ph';
+      var skip = 'header,nav,footer,form,svg,script,style,textarea,select,.sticky-cta,.case-spec,.case-body h2,.qual,.ph';
       var blocks = document.querySelectorAll('h1,h2,h3,p,li,dd');
       for (var b = 0; b < blocks.length; b++) {
         if (blocks[b].closest(skip)) continue;
