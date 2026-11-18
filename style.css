@@ -1089,3 +1089,8 @@
             .nowrap, .nowrap-phrase, .hero .nowrap, .case-spec .nowrap, .case-body h2 .nowrap, .qual { display: inline; white-space: normal; }
             .hero .hero-line { display: inline; margin: 0; }
         }
+
+        /* v60 スマホ：中央見出しの下の説明文も中央そろえに */
+        @media (max-width: 768px) {
+            .feature-card p, .service-box p, .hero .hero-sub { text-align: center; }
+        }
