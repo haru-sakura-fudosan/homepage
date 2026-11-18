@@ -1076,11 +1076,16 @@
         .net-svg .m-min2 { font-size: 24px; font-weight: 700; fill: #0D0D0D; }
         .net-svg .m-hub { font-size: 28px; }
         .net-svg .m-hubic { font-size: 18px; fill: #FDF4C8; }
-        .ph { display: inline-block; max-width: 100%; vertical-align: top; }  /* 行に収まる限りは切れず、行幅を超える長い文節だけ折り返す */
         h1, h2, h3 { text-wrap: balance; }
         p, li, dd { text-wrap: pretty; }
 
         /* v56 保有資格：1資格ごとに改行を保つ */
         .qual { display: inline-block; white-space: nowrap; }
         .qual:not(:last-child)::after { content: "/"; margin: 0 .5em; }
-        @media (max-width: 640px) { .qual-label { display: block; margin-bottom: 4px; } .qual { display: block; } .qual:not(:last-child)::after { content: none; } }
+        
+
+        /* v59 スマホ：手動の改行指定をやめ、画面幅で自然に折り返す */
+        @media (max-width: 768px) {
+            .nowrap, .nowrap-phrase, .hero .nowrap, .case-spec .nowrap, .case-body h2 .nowrap, .qual { display: inline; white-space: normal; }
+            .hero .hero-line { display: inline; margin: 0; }
+        }
